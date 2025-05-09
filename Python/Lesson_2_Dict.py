@@ -34,11 +34,13 @@ for idx, d in enumerate(list_of_dicts):
             # If key exists, compare and take max value
             if value > result_dict[key][0]:
                 result_dict[key] = (value, idx, result_dict[key][2]+1)  # Update with max value and index
+            else:
+                result_dict[key] = (result_dict[key][0], result_dict[key][1], result_dict[key][2]+1)
 
 final_dict = {}  # This will store the final result with renamed keys
 
 for key, (value, idx, cnt) in result_dict.items():
-    if result_dict[key][2] > 1: # If key appears in more than one dict, rename key adding dictionary number
+    if cnt > 1: # If key appears in more than one dict, rename key adding dictionary number
         final_key = f"{key}_{idx}"
     else:
         final_key = key
