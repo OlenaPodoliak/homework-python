@@ -22,6 +22,7 @@ class News(FeedRecord):
         date = datetime.now().strftime("%Y-%m-%d %H:%M")
         return f"{super().format()}\n{self.text}\n{self.city}, {date}\n\n"
 
+
 # Advertising
 class PrivateAd(FeedRecord):
     def __init__(self, text, expiration_date):
@@ -81,6 +82,7 @@ class NewsFeedTool:
         self.publish(record)
         print(f"Record published to {self.filename}\n")
 
-# Example usage
-tool = NewsFeedTool()
-tool.run()
+if __name__ == '__main__':
+    # Example usage
+    tool = NewsFeedTool()
+    tool.run()
